@@ -1,0 +1,28 @@
+{
+  "name": "team-profile-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrsparl/team-profile-manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrsparl/team-profile-manager/issues"
+  },
+  "homepage": "https://github.com/jrsparl/team-profile-manager#readme",
+  "dependencies": {
+    "inquire": "^0.4.8"
+  },
+  "devDependencies": {
+    "jest": "^26.5.3"
+  }
+}
