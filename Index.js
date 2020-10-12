@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const path = require("path");
 
 const renderDir = path.resolve(__dirname, "dist");
 const renderPath = path.resolve(renderDir, "index.html");
@@ -85,10 +86,11 @@ const PromptCreateEmployee = () => {
                     type: 'list',
                     name: 'EmployeeType',
                     message: "Would you like to enter one of the following employee types?",
-                    choices: ["Engineer", "Intern", "No"]
+                    choices: ["Engineer", "Intern", "No I'm all done!"]
                 }]).then(answers => {
-                    if(answers.EmployeeType==="No"){
+                    if(answers.EmployeeType==="No I'm all done!"){
                       renderHTML();
+                      console.log("Your page has been generated! Congrats on building your first team!")
                     }else{
                         inquirer.prompt(employeeDetails).then(function(details){
                             if(answers.EmployeeType==="Engineer"){

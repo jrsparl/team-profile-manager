@@ -1,5 +1,6 @@
 const teamGeneration = (teamProfile) => {
-    const managerCard = (manager) => {
+    
+  const managerCard = (manager) => {
       return `
         <div class="card" style="width: 18rem;">
         <div class="card-body text-white bg-primary">
@@ -91,9 +92,9 @@ const teamGeneration = (teamProfile) => {
       </head>
     
       <body>
-      <nav class="navbar navbar-dark bg-success mb-5">
-      <span class="navbar-brand mt-4 mb-4 w-100 text-center"><h1>Team Profile</h1></span>
-        </nav>
+      <header class="col-12 bg-danger text-light sticky-top p-4 p-lg-3">
+      <h1 class="text-center">Team Profile</h1>
+      </header>
         <div class="container">
         <div class="d-lg-flex justify-content-around"> 
         <div class="card-columns">
