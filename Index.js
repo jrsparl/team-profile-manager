@@ -74,20 +74,19 @@ const InitializeTeam = () => {
 }
 
 
-const EmployeePrompts = () => {
+const EmployeePrompts = teamData => {
     return inquirer.prompt([
-    
         {
             type: 'list',
             name: 'EmployeeType',
             message: "Would you like to enter one of the following employee types?",
             choices: ["Engineer", "Intern", "No"]
         },
-
     {
         type: 'input',
         name: 'EmployeeName',
         message: "Please enter the team member's name.",
+        when: ({EmployeeType}) === "Engineer" || "Intern",
         validate: MnameInput => {
             if (MnameInput) {
                 return true;
@@ -101,6 +100,7 @@ const EmployeePrompts = () => {
         type: 'input',
         name: 'EmployeeID',
         message: "Please enter the team member's Employee ID.",
+        when: ({EmployeeType}) === "Engineer" || "Intern",
         validate: ManagerIDInput => {
             if (ManagerIDInput) {
                 return true;
@@ -114,6 +114,7 @@ const EmployeePrompts = () => {
         type: 'input',
         name: 'EmployeeEmail',
         message: "Please enter the team member's Email Address.",
+        when: ({EmployeeType}) === "Engineer" || "Intern",
         validate: ManagerEmailInput => {
             if (ManagerEmailInput) {
                 return true;
@@ -125,14 +126,15 @@ const EmployeePrompts = () => {
     },
 
     ])
-
 }
 
 
 
 
 
-InitializeTeam();
+
+
+InitializeTeam().then(EmployeePrompts);
 
 // const teamBuilder = teamData => {
 //     console.log(`
