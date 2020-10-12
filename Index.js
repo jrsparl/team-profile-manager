@@ -90,7 +90,7 @@ const PromptCreateEmployee = () => {
                 }]).then(answers => {
                     if(answers.EmployeeType==="No I'm all done!"){
                       renderHTML();
-                      console.log("Your page has been generated! Congrats on building your first team!")
+                      console.log("Your page has been generated! Congrats on building your team!")
                     }else{
                         inquirer.prompt(employeeDetails).then(function(details){
                             if(answers.EmployeeType==="Engineer"){
@@ -188,21 +188,21 @@ const createManager = managerData => {
     let { ManagerName, ManagerID, ManagerEmail, ManagerOfficeNum } = managerData;
     let newManager = new Manager(ManagerName, ManagerID, ManagerEmail, ManagerOfficeNum);
     teamProfile.push(newManager)
-    console.log(teamProfile)
+    //console.log(teamProfile)
 }
 
 const createEngineer = function(details, gitHubname){
     let {name, id, email} = details;
     let newEngineer = new Engineer(name, id, email, gitHubname)
     teamProfile.push(newEngineer)
-    console.log(teamProfile)
+    //console.log(teamProfile)
 }
 
 const createIntern = function(details, schoolName){
     let {name, id, email} = details;
     let newIntern = new Intern(name, id, email, schoolName)
     teamProfile.push(newIntern)
-    console.log(teamProfile)
+    //console.log(teamProfile)
 }
 
 function renderHTML() {
