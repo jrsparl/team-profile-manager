@@ -10,7 +10,7 @@ let teamProfile = []
 
 
 // array of questions for user
-const managerSetup = () => {
+const InitializeTeam = () => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -66,93 +66,100 @@ const managerSetup = () => {
         },
 
     ]).then(function(managerData) {
-        let { name, id, email } = managerData;
-        let newManager = new Manager(name, id, email, manager.officeNumber);
+        let { ManagerName, ManagerID, ManagerEmail, ManagerOfficeNum } = managerData;
+        let newManager = new Manager(ManagerName, ManagerID, ManagerEmail, ManagerOfficeNum);
         teamProfile.push(newManager)
         console.log(teamProfile)
     })
 }
 
 
-managerSetup();
+const EmployeePrompts = () => {
+    return inquirer.prompt([
+    
+        {
+            type: 'list',
+            name: 'EmployeeType',
+            message: "Would you like to enter one of the following employee types?",
+            choices: ["Engineer", "Intern", "No"]
+        },
 
-// const teamMemberSetup = teamData => {
+    {
+        type: 'input',
+        name: 'EmployeeName',
+        message: "Please enter the team member's name.",
+        validate: MnameInput => {
+            if (MnameInput) {
+                return true;
+            } else {
+                console.log("Please enter the team member's name!");
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'EmployeeID',
+        message: "Please enter the team member's Employee ID.",
+        validate: ManagerIDInput => {
+            if (ManagerIDInput) {
+                return true;
+            } else {
+                console.log("Please enter the team member's Employee ID!");
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'EmployeeEmail',
+        message: "Please enter the team member's Email Address.",
+        validate: ManagerEmailInput => {
+            if (ManagerEmailInput) {
+                return true;
+            } else {
+                console.log("Please enter the team member's Email Address!");
+                return false;
+            }
+        }
+    },
+
+    ])
+
+}
+
+
+
+
+
+InitializeTeam();
+
+// const teamBuilder = teamData => {
 //     console.log(`
 //   =================
 //   Fill In Your Team
 //   =================
 //   `);
-  
-//     // If there's no 'projects' array property, create one
+
+//     // If there's no 'members' array property, create one
 //     if (!teamData.members) {
-//       teamData.members = [];
+//         teamData.members = [];
 //     }
 //     return inquirer
-//       .prompt([
-//         {
-//           type: 'input',
-//           name: 'name',
-//           message: 'What is the name of your project? (Required)',
-//           validate: nameInput => {
-//             if (nameInput) {
-//               return true;
+//         .prompt([
+//             {
+//                 type: 'list',
+//                 name: 'roleChoice',
+//                 message: 'Will you be entering either of the following?',
+//                 choices: ["Intern", "Engineer", "No"]
+//             },
+//         ])
+//         .then(function(memberData => {
+//             teamData.members.push(memberData);
+//             if (memberData.confirmAddMember) {
+//                 return teamMemberSetup(teamData);
 //             } else {
-//               console.log('You need to enter a project name!');
-//               return false;
+//                 return teamData;
 //             }
-//           }
-//         },
-//         {
-//           type: 'input',
-//           name: 'description',
-//           message: 'Provide a description of the project (Required)',
-//           validate: descriptionInput => {
-//             if (descriptionInput) {
-//               return true;
-//             } else {
-//               console.log('You need to enter a project description!');
-//               return false;
-//             }
-//           }
-//         },
-//         {
-//           type: 'checkbox',
-//           name: 'languages',
-//           message: 'What did you this project with? (Check all that apply)',
-//           choices: ['JavaScript', 'HTML', 'CSS', 'ES6', 'jQuery', 'Bootstrap', 'Node']
-//         },
-//         {
-//           type: 'input',
-//           name: 'link',
-//           message: 'Enter the GitHub link to your project. (Required)',
-//           validate: linkInput => {
-//             if (linkInput) {
-//               return true;
-//             } else {
-//               console.log('You need to enter a project GitHub link!');
-//               return false;
-//             }
-//           }
-//         },
-//         {
-//           type: 'confirm',
-//           name: 'feature',
-//           message: 'Would you like to feature this project?',
-//           default: false
-//         },
-//         {
-//           type: 'confirm',
-//           name: 'confirmAddProject',
-//           message: 'Would you like to enter another project?',
-//           default: false
-//         }
-//       ])
-//       .then(memberData => {
-//         teamData.members.push(memberData);
-//         if (memberData.confirmAddMember) {
-//           return teamMemberSetup(teamData);
-//         } else {
-//           return teamData;
-//         }
-//       });
-//   }; 
+//         });
+// }; 
